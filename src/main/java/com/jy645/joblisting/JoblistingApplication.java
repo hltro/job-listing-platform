@@ -1,8 +1,10 @@
 package com.jy645.joblisting;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -14,7 +16,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
+@Configuration
 public class JoblistingApplication {
+	@Value("${MONGODB_USERNAME}")
+	private String mongoDbUsername;
+
+	@Value("${MONGODB_PASSWORD}")
+	private String mongoDbPassword;
 
 	@Bean
 	public Docket api() {
